@@ -20,13 +20,8 @@ let package = Package(
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
             ],
-            swiftSettings: swiftSettings
-        ),
-        .testTarget(
-            name: "AppTests",
-            dependencies: [
-                .target(name: "App"),
-                .product(name: "VaporTesting", package: "vapor"),
+            resources: [
+                .process("Assets")
             ],
             swiftSettings: swiftSettings
         )

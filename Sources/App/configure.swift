@@ -1,9 +1,13 @@
 import Vapor
 
-// configures your application
 public func configure(_ app: Application) async throws {
-    // uncomment to serve files from /Public folder
-    // app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
-    // register routes
+    Task { @MainActor in
+        do {
+            try Challenges.shared.load()
+        } catch {
+            print("Error loading challenges: \(error)")
+        }
+        
+    }
     try routes(app)
 }
